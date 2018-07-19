@@ -1,0 +1,9 @@
+[submodule "src/dependencies/shadedErrorBar"]
+	path = src/dependencies/shadedErrorBar
+	url = https://github.com/raacampbell/shadedErrorBar.git
+[submodule "src/dependencies/export_fig"]
+	path = src/dependencies/export_fig
+	url = https://github.com/altmany/export_fig.git
+[submodule "src/dependencies/legendflex"]
+	path = src/dependencies/legendflex
+	url = https://github.com/kakearney/legendflex-pkg.git
