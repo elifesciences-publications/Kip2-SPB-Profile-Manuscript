@@ -10,7 +10,7 @@ Authors
 -------
 
     Lukas Widmer <lukas.widmer@bsse.ethz.ch> (Scripts, Data Analysis)
-    Xiuzhen Chen <xiuzhen.chen@bc.biol.ethz.ch (Image Data)
+    Xiuzhen Chen <xiuzhen.chen@bc.biol.ethz.ch> (Image Data)
 
 
 Installation & Usage
@@ -42,5 +42,7 @@ References
 ==========
 [1]: http://google.com
 1. Xiuzhen Chen†, Lukas Andreas Widmer†, Marcel Stangier, Michel Steinmetz, Jörg Stelling*, Yves Barral*. (2018)  
-A mechanism for the control of microtubule plus-end dynamics from the minus-end
+A mechanism for the control of microtubule plus-end dynamics from the minus-end  
+† contributed equally
+* corresponding authors: <joerg.stelling@bsse.ethz.ch>, <yves.barral@bc.biol.ethz.ch>
 [Submitted.]
