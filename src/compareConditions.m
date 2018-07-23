@@ -1,27 +1,10 @@
 % © 2018 ETH Zurich, Lukas Widmer
-clear
-close all
-clc
-
-%%
+function compareConditions()
 load(['..' filesep 'analyzedData' filesep 'binnedProfiles.mat'], 'conditionResults');
 
 %%
+[conditions, maxLength] = displayConditions(conditionResults);
 
-conditions = {};
-
-maxLength = 0;
-for currentConditionIndex = 1:length(conditionResults)
-    c = conditionResults{currentConditionIndex};
-    conditions{end+1} = c.condition;
-    meanLength = mean(c.lengthsUM); 
-    if meanLength > maxLength
-        maxLength = meanLength;
-    end
-    disp(sprintf('%2i: %s (n = %i)', currentConditionIndex, c.condition, size(c.lengths,1)));
-end
-
-%conditions
 %%
 conditionCombinations = {};
 

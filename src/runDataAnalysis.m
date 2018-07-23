@@ -25,3 +25,9 @@ lengthAnalysis();
 
 %%
 compareConditions();
+
+%%
+compareSimulationToAggregatedData();
+
+%%
+useSimulatinoForPrediction();

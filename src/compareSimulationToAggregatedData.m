@@ -1,6 +1,4 @@
 function compareSimulationToAggregatedData()
-close all
-
 exportFigures = true;
 %% Configure folders & data file locations
 simResultFolder = ['..' filesep 'simulationResults'];
@@ -60,14 +58,8 @@ nSims = size(simResults.results, 2);
 %% Load experimental data
 expResults = load([expResultFolderSep expResultFile]);
 
-%% List experimental data
-conditions = {};
-
-for i = 1:length(expResults.conditionResults)
-    c = expResults.conditionResults{i};
-    conditions{end+1} = c.condition;
-    fprintf('%2i: %s\n', i, c.condition);
-end
+%% List experimental conditions
+displayConditions(expResults.conditionResults);
 
 %% Configure experimental condition to compare against
 expIndex = 11;

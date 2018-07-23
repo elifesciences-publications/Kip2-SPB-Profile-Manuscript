@@ -1,4 +1,4 @@
-clear
+function aggregateData()
 
 baseDirectory = ['..' filesep 'rawData' filesep];
 resultDirectory = ['..' filesep 'analyzedData' filesep 'aggregatedProfiles' filesep];
@@ -136,9 +136,6 @@ for dirIndex = 1:length(directories)
                 error(['Red and green profile are the same: ' currentGreenFileName]);
             end
         end
-        %%
-%         T_green
-%         T_red
 
         writetable(T_green, [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-green.txt'], 'Delimiter', '\t')
         writetable(T_red,   [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-red.txt'], 'Delimiter', '\t')

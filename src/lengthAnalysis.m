@@ -1,6 +1,4 @@
-clear
-close all
-clc
+function lengthAnalysis()
 
 %% Configure data folders
 analyzedDataFolder = ['..' filesep 'analyzedData'];
