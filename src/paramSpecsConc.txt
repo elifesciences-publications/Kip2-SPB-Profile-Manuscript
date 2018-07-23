@@ -1,0 +1,4 @@
+names;			bmin;		bmax;		islog;	legend
+kip2Total;		100;	    300;	  	0;	    [Kip2]_{total} (nM)
+kin;			0.012;		0.03;		1; 		k_{in} (nM^{-1} s^{-1})
+kout;           0.7292   ;  29.17;      0;      k_{out} (s^{-1})
