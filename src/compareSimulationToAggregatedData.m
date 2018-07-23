@@ -4,8 +4,8 @@ exportFigures = true;
 simResultFolder = ['..' filesep 'simulationResults'];
 simResultFolderSep = [simResultFolder filesep];
 
-fileName1 =  'simResults-20180626T202346.mat';
-fileName2 = 'simResults-20180628T094544.mat';
+fileName1 =  'simResults-20180626T202346.mat'; % Produced using Fig2C-1 mode in "runSampling.m"
+fileName2 = 'simResults-20180628T094544.mat';  % Produced using Fig2C-2 mode in "runSampling.m"
 
 analyzedFileName1 = ['analyzed-' fileName1];
 analyzedFileName2 = ['analyzed-' fileName2];

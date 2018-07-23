@@ -4,7 +4,7 @@ exportFigures = true;
 simResultFolder = ['..' filesep 'simulationResults'];
 simResultFolderSep = [simResultFolder filesep];
 
-fileName = 'simResults-20180706T153609.mat'; % FINAL KIP2
+fileName = 'simResults-20180706T153609.mat'; % Produced using Fig2B mode in "runSampling.m"
 analyzedFileName = ['analyzed-' fileName];
 
 expResultFolder = ['..' filesep 'analyzedData'];
