@@ -1,4 +1,13 @@
 function compareSimulationToAggregatedData()
+% compareSimulationToAggregatedData: Uses binned profile data to
+% compute the likelihood of model profiles, and creates the plots
+% Fig2C and S8 in the manuscript.
+%
+%   Usage:
+%   compareSimulationToAggregatedData()
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 exportFigures = true;
 %% Configure folders & data file locations
 simResultFolder = ['..' filesep 'simulationResults'];
