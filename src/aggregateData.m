@@ -6,8 +6,8 @@ function aggregateData()
 %   Usage:
 %   aggregateData()
 
-
 % © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 baseDirectory = ['..' filesep 'rawData' filesep];
 resultDirectory = ['..' filesep 'analyzedData' filesep 'aggregatedProfiles' filesep];
 
