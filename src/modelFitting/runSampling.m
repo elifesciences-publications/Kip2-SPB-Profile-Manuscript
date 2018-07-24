@@ -4,7 +4,7 @@ clear
 sampleMode = 'Fig2B';
 
 switch sampleMode % Settings used for publication
-    case 'Fig2C-1'
+    case 'Fig2C-1' % Used to generate "simResults-20180626T202346.mat"
         nNodes = 250;
         maxLength_range = 183; % sites (8 nm each) on PF
         nKip2Free_bounds = [100 1000];
@@ -27,7 +27,7 @@ switch sampleMode % Settings used for publication
         parameterCombinations(5, :) = parameterCombinations(5, :) .* (0.003 .* parameterCombinations(2, :) + 2.71);
         
         nPoints = 901; % Use 901 for sampling (4 Hz), 3601 for Fig. 2B (1 Hz)
-    case 'Fig2C-2'
+    case 'Fig2C-2' % Used to generate "simResults-20180628T094544.mat"
         nNodes = 180;
         maxLength_range = 183; % sites (8 nm each) on PF
         nKip2Free_bounds = [81 600];
@@ -50,7 +50,7 @@ switch sampleMode % Settings used for publication
         parameterCombinations(5, :) = parameterCombinations(5, :) .* (0.003 .* parameterCombinations(2, :) + 2.71);
         
         nPoints = 901; % Use 901 for sampling (4 Hz), 3601 for Fig. 2B (1 Hz)
-    case 'Fig2B'
+    case 'Fig2B' % Used to generate "simResults-20180706T153609.mat"
         nNodes = 4; % 6
         maxLength_range = [116 150 183 216 249 283]; % sites (8 nm each) on PF
         nKip2Free_range = 250; % molecules
