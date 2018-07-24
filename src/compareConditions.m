@@ -1,5 +1,12 @@
-% © 2018 ETH Zurich, Lukas Widmer
 function compareConditions()
+% compareConditions: Generates mean / 95% CI plots of different experimental conditions / bins
+% used in the manuscript
+%
+%   Usage:
+%   compareConditions()
+
+% Â© 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 load(['..' filesep 'analyzedData' filesep 'binnedProfiles.mat'], 'conditionResults');
 
 %%
@@ -591,9 +598,9 @@ for combinationIndex = 1:length(conditionCombinations)
                 else
                     yCoord = 1;
                 end
-                text(mean(currentXlims), yCoord, sprintf('slope = %.3g ± %.3g, Y-intercept = %.3g ± %.3g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1)), 'HorizontalAlignment', 'center');
-                fprintf('plot: %i, slope = %.3g ± %.3g, Y-intercept = %.3g ± %.3g\n', combinationIndex, linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
-                %legendText{end+1} = sprintf('slope = %g ± %g, Y-intercept = %g ± %g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
+                text(mean(currentXlims), yCoord, sprintf('slope = %.3g ï¿½ %.3g, Y-intercept = %.3g ï¿½ %.3g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1)), 'HorizontalAlignment', 'center');
+                fprintf('plot: %i, slope = %.3g ï¿½ %.3g, Y-intercept = %.3g ï¿½ %.3g\n', combinationIndex, linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
+                %legendText{end+1} = sprintf('slope = %g ï¿½ %g, Y-intercept = %g ï¿½ %g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
         end
     end
     
