@@ -1,4 +1,12 @@
 function loadDependencies()
+% loadDependencies: Downloads dependencies via Git and adds them to the MATLAB path
+%
+%   Usage:
+%   loadDependencies()
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
+
     if ~exist(['dependencies' filesep 'shadedErrorBar' filesep 'shadedErrorBar.m'], 'file')
         warning('Git submodules missing. Attempting to download them. Note that this requires installation of git on Linux/OS X or Git for Windows.');
         if ispc
