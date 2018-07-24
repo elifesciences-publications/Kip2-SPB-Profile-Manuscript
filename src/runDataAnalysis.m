@@ -12,4 +12,4 @@ compareConditions();
 compareSimulationToAggregatedData();
 
 %%
-useSimulatinoForPrediction();
+useSimulationForPrediction();
