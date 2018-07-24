@@ -1,5 +1,13 @@
 function aggregateData()
+% aggregateData: Aggregates 5 px wide line profiles from individual green / red 
+% channel CSV files, imports them into tables, and writes the tables into CSV
+% files again.
+%
+%   Usage:
+%   aggregateData()
 
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
 baseDirectory = ['..' filesep 'rawData' filesep];
 resultDirectory = ['..' filesep 'analyzedData' filesep 'aggregatedProfiles' filesep];
 
