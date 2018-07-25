@@ -1,4 +1,9 @@
 function conditionResultOut = createTwoColorSubset(conditionResult, indices, newName)
+% createTwoColorSubset: Create subset of fluorescence profiles in struct conditionResult
+% using the profiles specified in indices, name resulting experimental condition newName,
+% and return resulting struct conditionResultOut
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
     conditionResultOut = struct;
     conditionResultOut.totalLengths                  = conditionResult.totalLengths(indices);
     conditionResultOut.totalLengthsUM                = conditionResult.totalLengthsUM(indices);
