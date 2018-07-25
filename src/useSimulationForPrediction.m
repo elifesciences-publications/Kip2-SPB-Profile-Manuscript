@@ -1,4 +1,13 @@
 function useSimulationForPrediction()
+% useSimulationForPrediction: Plots data and model predictions
+% for different bin lengths / experimental conditions. Use to 
+% generate Fig. 2B.
+%
+%   Usage:
+%   useSimulationForPrediction()
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 exportFigures = true;
 %% Configure folders & data file locations
 simResultFolder = ['..' filesep 'simulationResults'];

@@ -1,4 +1,34 @@
 function [] = plot_OutV2(OutV,paramSpecs,varargin)
+% plot_OutV2: Plot likelihood function values in parameter space
+% Complete rewrite of a script written by Claude Lormeau in the CSB group
+%
+%   Usage:
+%   plot_OutV2(OutV, paramSpecs, ...)
+%
+% Optional arguments:
+%   plotMode: 
+%     'sampleValues' (default): plot likelihood values of samples
+%     'density': plot kernel density estimate
+%     'levelSets': plot convex hull of likelihood level sets
+%   bounds:
+%     'fromParamSpecs' (default) : use parameter bounds from paramSpecs table
+%     'fromData' : 
+%  costThreshold: inf : cost function maximum threshold
+%  plotSamples: true : plot samples
+%  nDoF: 0 : degrees of freedom used to compute cost function level sets
+%  nParameters: 0 : number of parameters used to compute cost function
+%                   level sets
+%  levelSets: [0.95, 0.75, 0.5, 0.25, 0.05]
+%             Chi-square confidence regions to compute using
+%             DoF = nDoF - nParameters
+%  ticks: {} : Cell array of ticks to plot for each parameter (each cell array
+%              member is a double vector of tick locations)
+%  
+%  showMaxLikelihoodPoint: true : show/hide maximum-likelihood point
+%  pointSize: 30 : size of plotted samples
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
     %% Set mode
     p = inputParser;
     addParameter(p, 'plotMode', 'sampleValues'); % other options: density, levelSets

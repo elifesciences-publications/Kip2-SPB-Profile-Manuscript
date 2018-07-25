@@ -1,4 +1,12 @@
 function lengthAnalysis()
+% lengthAnalysis: Loads aggregated profile data, performs peak detection,
+% length computation, and binning of data (into binnedProfiles.mat)
+%
+%   Usage:
+%   lengthAnalysis()
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 
 %% Configure data folders
 analyzedDataFolder = ['..' filesep 'analyzedData'];
