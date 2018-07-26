@@ -173,16 +173,16 @@ for parameterIndex = parameterIndices
     currentParams = parameterCombinations(:, parameterIndex);
 
     currentParameters                  = struct;
-    currentParameters.maxLength        = currentParams(1);
-    currentParameters.nKip2Free        = currentParams(2);
-    currentParameters.k_on_mt          = ones(1, currentParameters.maxLength) * currentParams(3);
-    currentParameters.k_on_mt(1)       = currentParams(3) + currentParams(4);
-    currentParameters.k_step_mt        = ones(1, currentParameters.maxLength) * k_step_Kip2_vivo;
-    currentParameters.k_step_mt(end)   = 0;
-    currentParameters.k_detach_mt      = zeros(1, currentParameters.maxLength) + k_detach_Kip2;
-    currentParameters.k_detach_mt(end) = currentParams(5);
-    currentParameters.reportRunLengths = false;
-    currentParameters.binSizeLimit     = currentParams(1)*0.008 + [-0.2 0.2];
+    currentParameters.maxLength        = currentParams(1); % MT protofilament length in sites (8 nm each)
+    currentParameters.nKip2Free        = currentParams(2); % Number of Kip2 molecules available per protofilament
+    currentParameters.k_on_mt          = ones(1, currentParameters.maxLength) * currentParams(3); % k_on (nM^-1 s^-1)
+    currentParameters.k_on_mt(1)       = currentParams(3) + currentParams(4); % k_in + k_on (nM^-1 s^-1)
+    currentParameters.k_step_mt        = ones(1, currentParameters.maxLength) * k_step_Kip2_vivo; % k_step (s^-1)
+    currentParameters.k_step_mt(end)   = 0; % k_step at end (s^-1) - motor cannot step off
+    currentParameters.k_detach_mt      = zeros(1, currentParameters.maxLength) + k_detach_Kip2; % k_off (s^-1)
+    currentParameters.k_detach_mt(end) = currentParams(5); % k_out at end (s^-1)
+    currentParameters.reportRunLengths = false; % optimize
+    currentParameters.binSizeLimit     = currentParams(1)*0.008 + [-0.2 0.2]; % Peak must be +- pixel (plus half pixel where peak still is inside pixel)
 
     if runSingleDebug
         simulateAndComputeCorrectedMeasurementModel(resultFolderCorrected, parameterIndex, currentParameters, tspan);
