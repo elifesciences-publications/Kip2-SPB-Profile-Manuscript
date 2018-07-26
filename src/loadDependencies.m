@@ -4,7 +4,7 @@ function loadDependencies()
 %   Usage:
 %   loadDependencies()
 
-% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+% Â© 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
 
 
     if ~exist(['dependencies' filesep 'shadedErrorBar' filesep 'shadedErrorBar.m'], 'file')
