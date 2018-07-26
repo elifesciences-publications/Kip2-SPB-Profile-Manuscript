@@ -20,7 +20,7 @@ Windows
 -------
 1. Install MATLAB (tested on R2016b-R2018a)
 2. Install Git via TortoiseGit (https://tortoisegit.org/)
-3 Git clone this repo
+3. Git clone this repo
 
 Mac OS X
 --------
