@@ -1,7 +1,10 @@
 function result = computeMeasurementModel(simResult, outFileName, binBounds)
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
     %% 1. Perform virtual microscopy
     
-    mode = 'both'; % others: SPB, both
+    mode = 'both'; % Profile alignment options: plusEnd, SPB, both
     useBinBounds = exist('binBounds', 'var');  
     vm = struct;
     
@@ -69,8 +72,7 @@ function result = computeMeasurementModel(simResult, outFileName, binBounds)
         result.vm.isInBin{j} = zeros(1, nTimeSteps);
         for i = 1:nTimeSteps
             greenResult = struct;
-            [~, greenResult.locs] = findpeaks_stripped(result.vm.binnedProfiles{j}(i, :)); % optimize for speed
-            % [greenResult.pks, greenResult.locs, greenResult.w, greenResult.p] = findpeaks(result.vm.binnedProfiles{j}(i, :));
+            [~, greenResult.locs] = findpeaks(result.vm.binnedProfiles{j}(i, :)); % this can be optimized for speed
             
             % Plus end peak is the last one, if it exists
             result.vm.hasPeak{j}(i) = ~isempty(greenResult.locs);
@@ -80,7 +82,6 @@ function result = computeMeasurementModel(simResult, outFileName, binBounds)
             elseif useBinBounds 
                 peakIndex = greenResult.locs(end);
                 peakLocation = result.vm.xCoordsBinned((peakIndex - 1)*vm.params.binSize + j);
-                %peakLocation = 17*round((peakLocation/0.008)/17)*0.008; % round to nearest bin
                 result.vm.isInBin{j}(i) = (binBounds(1) <= peakLocation && binBounds(2) >= peakLocation);
             else
                 result.vm.isInBin{j}(i) = true;
@@ -320,7 +321,6 @@ function result = computeMeasurementModel(simResult, outFileName, binBounds)
     %result.model.plusEndLengthOffsetsAlt = cell(1, vm.params.binSize);
     for i = 1:vm.params.binSize
         % MT length - (length from start start to peak)
-        %result.model.plusEndLengthOffsetsAlt{i}  = curLength*0.008 - ((result.vm.binnedPeakLocations{i} - 1)*vm.params.binSize - vm.params.padding - (vm.params.binSize - 1)/2 + i - 1)*0.008; % in sites
         hasPeak = isfinite(result.vm.binnedPeakLocations(:, i));
         result.model.plusEndLengthOffsets(hasPeak, i) = curLength*0.008 - result.vm.xCoordsBinned((result.vm.binnedPeakLocations(hasPeak, i) - 1)*vm.params.binSize + i);
         

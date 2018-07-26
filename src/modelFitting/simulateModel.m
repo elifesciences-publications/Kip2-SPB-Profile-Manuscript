@@ -7,7 +7,7 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
 %     .maxLength: double
 %       length of filament
 %     .k_on_mt: double vector
-%       on rate for each site (s^-1)
+%       on rate for each site (nM^-1 s^-1)
 %     .k_step_mt: double vector
 %       step rate for each site (s^-1)
 %     .k_detach_mt: double vector
@@ -27,7 +27,8 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
 % Output:
 %   result: struct
 %     .mtState: double matrix
-%       
+%       matrix of length(tspan) x maxLength dimension containing
+%       all requested samples (entry = 0: free site, 1: Kip2 bound)
 %     .runLengthsKip2: double vector
 %       motor run lengths (from binding to unbinding)
 %     .runTimesKip2: double vector
@@ -115,7 +116,7 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
         %% Attachment       
         freeSites = mt == 0;
         
-        r_on_mt = k_on_mt * (60/140) * nKip2Free;
+        r_on_mt = k_on_mt * (60/140) * nKip2Free; % Conversion: 140 molecules =^= 60 nM
         attachmentRates = double(freeSites) .* r_on_mt;
         attachmentCumSum = cumsum(attachmentRates);
         
