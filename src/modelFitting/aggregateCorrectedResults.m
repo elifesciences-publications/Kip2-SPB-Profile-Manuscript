@@ -1,5 +1,7 @@
 function aggregateCorrectedResults(i, resultFolderCorrected, absResultFolder, zeroOffsetIndex, exportPlots, debug, parameterCombinations)
     
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+    
     zeroOffsetFile = load([resultFolderCorrected.absVmFolderName{zeroOffsetIndex} int2str(i) '.mat']);
     
     if zeroOffsetFile.result.model.nProfiles > 0

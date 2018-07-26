@@ -1,4 +1,7 @@
 function aggregateMeasurementModelResults(absFileName, resultFolder, runSingleDebug, debugIndices)
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 exportPlots = false;
 
 optimizationWorkspace = load(absFileName);

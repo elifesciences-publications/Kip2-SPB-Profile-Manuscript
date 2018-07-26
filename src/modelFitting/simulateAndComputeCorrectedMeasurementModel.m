@@ -1,4 +1,7 @@
 function simulateAndComputeCorrectedMeasurementModel(resultFolderCorrected, parameterIndex, currentParameters, tspan)
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
     currentParametersInitial = currentParameters;
     currentParametersInitial.binSizeLimit = [];
     result = simulateAndComputeSingleMeasurementModel(resultFolderCorrected.absFolderName{1}, parameterIndex, currentParametersInitial, tspan);
