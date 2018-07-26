@@ -1,5 +1,15 @@
 %function resultFolder = runSampling(sampleMode) 
 % Recommend running as script for easier debugging / resuming 
+
+% runSampling: Script that samples the stochastic model and computes
+% the measurement model in parameter space. "sampleMode" switches
+% between sampling modes used for Fig. 2B and 2C/S8. Two sets of parameter
+% boundaries were used for Fig. 2C (see below). Note that this procedure
+% is fairly computationally intense, and was run on 180-512 cores to achieve
+% fast compute times.
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+
 clear
 sampleMode = 'Fig2B';
 
