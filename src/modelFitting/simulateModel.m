@@ -1,4 +1,47 @@
 function result = simulateModel(parameters, parameterIndex, tspan, currentFileName)
+% simulateModel: Stochastic simulation of Kip2 motor 
+%                model using the Direct Gillespie Algorithm
+% 
+% Arguments:
+%   parameters: struct
+%     .maxLength: double
+%       length of filament
+%     .k_on_mt: double vector
+%       on rate for each site (s^-1)
+%     .k_step_mt: double vector
+%       step rate for each site (s^-1)
+%     .k_detach_mt: double vector
+%       off rate for each site (s^-1)
+%     .nKip2Free: int
+%       number of free motors at t = 0
+%     .reportRunLengths: boolean
+%       keep track of motor run lengths / run times
+%       (turn off for performance reasons)
+%   parameterIndex: double
+%     index of parameter set (returned as part of the result struct)
+%   tspan: double vector
+%     vector of time points to export
+%   currentFileName: char vector
+%     file in which to save the result struct
+%
+% Output:
+%   result: struct
+%     .mtState: double matrix
+%       
+%     .runLengthsKip2: double vector
+%       motor run lengths (from binding to unbinding)
+%     .runTimesKip2: double vector
+%       motor run times (from binding to unbinding)
+%     .steps: double
+%       number of simulation steps taken
+%     .runtime: double
+%       runtime of algorithm in seconds
+%     .tspan: double vector
+%       vector of time points to export
+%     .parameterIndex: double
+%       index of parameter set specified when calling this function
+
+% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
 
     localStart = tic;
 
