@@ -605,12 +605,12 @@ for conditionIndex = 1:nConditions
     set(gca, 'YScale', 'log');
     grid on;
 
-    foo = gcf;
+    fig = gcf;
     
 
-    foo.Color = 'white';
-    foo.Position(3) = 2*foo.Position(3);
-    movegui(foo, 'center')
+    fig.Color = 'white';
+    fig.Position(3) = 2*fig.Position(3);
+    movegui(fig, 'center')
 
     if exportPlots
         export_fig([figureFolderSep 'png' filesep currentDataSet.name '-all.png'], '-q101', '-r300');
@@ -678,10 +678,10 @@ for conditionIndex = 1:nConditions
 
         legend boxoff;
 
-        foo = gcf;
-        foo.Color = 'white';
+        fig = gcf;
+        fig.Color = 'white';
         
-        movegui(foo, 'center')
+        movegui(fig, 'center')
         if exportPlots
             export_fig([figureFolderBinnedSep 'png' filesep currentDataSet.name '-centerAligned.png'], '-q101', '-r300');
             print([figureFolderBinnedSep 'pdf' filesep currentDataSet.name '-centerAligned.pdf'], '-dpdf');
