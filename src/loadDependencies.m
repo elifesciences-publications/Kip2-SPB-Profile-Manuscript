@@ -10,9 +10,9 @@ function loadDependencies()
     if ~exist(['dependencies' filesep 'shadedErrorBar' filesep 'shadedErrorBar.m'], 'file')
         warning('Git submodules missing. Attempting to download them. Note that this requires installation of git on Linux/OS X or Git for Windows.');
         if ispc
-            status = system('git submodule update --init --depth=1 --recursive');
+            status = system('git submodule update --init --recursive');
         else
-            status = system('LD_LIBRARY_PATH= && git submodule update --init --depth=1 --recursive');
+            status = system('LD_LIBRARY_PATH= && git submodule update --init --recursive');
         end
         if status ~= 0
             error('Could not initialize submodules');
