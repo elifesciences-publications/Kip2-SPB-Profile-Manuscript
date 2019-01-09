@@ -32,8 +32,32 @@ end
 figureFolder    = ['..' filesep 'figures' filesep 'peakDetection'];
 figureFolderSep = [figureFolder filesep];
 
+if ~exist(figureFolder, 'dir')
+    mkdir(figureFolder);
+end
+
+if ~exist([figureFolderSep 'pdf'], 'dir')
+    mkdir([figureFolderSep 'pdf']);
+end
+
+if ~exist([figureFolderSep 'png'], 'dir')
+    mkdir([figureFolderSep 'png']);
+end
+
 figureFolderBinned  = ['..' filesep 'figures' filesep 'peakDetection-binned'];
 figureFolderBinnedSep = [figureFolderBinned filesep];
+
+if ~exist(figureFolderBinned, 'dir')
+    mkdir(figureFolderBinned);
+end
+
+if ~exist([figureFolderBinnedSep 'pdf'], 'dir')
+    mkdir([figureFolderBinnedSep 'pdf']);
+end
+
+if ~exist([figureFolderBinnedSep 'png'], 'dir')
+    mkdir([figureFolderBinnedSep 'png']);
+end
 
 %% Configure results folder
 resultsFolder  = ['..' filesep 'analyzedData'];
@@ -110,6 +134,8 @@ for i = 1:length(binName)
     binName{i} = strrep(binName{i},'_','.');
 end
 
+dataAggregationConfig = load([dataFolderSep 'rawDataDirectories.mat'])
+
 %%
 
 
@@ -121,6 +147,7 @@ dataSetTemplate.redThreshold = 5e4;
 dataSetTemplate.backgroundComputation = 'last';
 dataSetTemplate.yAxisText = 'Kip2-3xsfGFP + Spc42-mCherry Fluorescence (AU)';
 dataSetTemplate.exportBins = true;
+dataSetTemplate.dataIsInSpbToPlusEndOrder = false;
 % 
 % dataSet = dataSetTemplate;
 % dataSet.name = 'wt-20180130-15100b';
@@ -196,6 +223,32 @@ dataSet.yAxisText = 'Kip3-3xsfGFP + Spc42-mCherry Fluorescence (AU)';
 dataSet.backgroundComputation = 'first'; % Need to do background correction past plus end (rather than SPB) due to fluorescence in the nucleus
 dataSets{end+1} = dataSet;
 
+for i = 1:size(dataAggregationConfig.greenFileNames,1)
+    for j = 1:size(dataAggregationConfig.greenFileNames,2)
+        currentGreenFile = dataAggregationConfig.greenFileNames{i,j};
+        currentRedFile = dataAggregationConfig.redFileNames{i,j};
+        if ~isempty(currentGreenFile)
+            dataSet = dataSetTemplate;
+            [~, dataSet.name] = fileparts(currentGreenFile);
+            dataSet.name = strrep(dataSet.name, '_', '-');
+            dataSet.greenFile = currentGreenFile; 
+            dataSet.redFile   = currentRedFile; 
+            dataSet.exportBins = true;
+            
+            if contains(dataSet.name, 'Kip3')
+                dataSet.backgroundComputation = 'first'; % Need to do background correction past plus end (rather than SPB) due to fluorescence in the nucleus
+            end
+            
+            if contains(dataSet.name, 'reversed')
+                dataSet.dataIsInSpbToPlusEndOrder = true;
+            end
+                
+            
+            dataSets{end+1} = dataSet;
+        end
+    end
+end
+
 %% Create binned datasets
 for i = 1:length(dataSets)
     if isfield(dataSets{i}, 'exportBins') && dataSets{i}.exportBins
@@ -205,6 +258,7 @@ for i = 1:length(dataSets)
             dataSet.greenFile = [binnedDataFolderSep dataSets{i}.name '-bin_' binFileName{j} '-green.txt'];
             dataSet.redFile   = [binnedDataFolderSep dataSets{i}.name '-bin_' binFileName{j} '-red.txt'];
             dataSet.doFlatness = true;
+            dataSet.dataIsInSpbToPlusEndOrder = false; % Reversal only needs to happen once
             dataSets{end+1} = dataSet;    
         end
     end
@@ -234,6 +288,8 @@ for conditionIndex = 1:nConditions
     % Detect duplicates, if any, and remove them from the analysis
     greenIntensities = greenDataTable{:,keepColumn}; % in AU
     redIntensities   = redDataTable{:,keepColumn};
+    
+
     
     intensitiesForUniqueComparison = greenIntensities;
     intensitiesForUniqueComparison(isnan(intensitiesForUniqueComparison)) = -Inf;
@@ -289,6 +345,16 @@ for conditionIndex = 1:nConditions
         end
         thisMTGreenIntensity = greenIntensities(:, i);
         thisMTRedIntensity   = redIntensities(:, i);
+        
+        
+        if currentDataSet.dataIsInSpbToPlusEndOrder
+            nonNanIndices = ~isnan(thisMTGreenIntensity);
+            thisMTGreenIntensity(nonNanIndices) = flipud(thisMTGreenIntensity(nonNanIndices));
+            thisMTRedIntensity(nonNanIndices) = flipud(thisMTRedIntensity(nonNanIndices));
+            greenIntensities(:, i) = thisMTGreenIntensity;
+            redIntensities(:, i) = thisMTRedIntensity;
+        end
+        
         thisMTlength = find(isnan(thisMTGreenIntensity), 1) - 1; % Last MT index
         if find(isnan(thisMTRedIntensity), 1) - 1 ~= thisMTlength
             error('Red and green MT length must be the same!');
@@ -732,6 +798,7 @@ for conditionIndex = 1:nConditions
         for i = 1:size(binBounds, 1)
             indices = find(condResult.lengthsUM > binBounds(i, 1) & condResult.lengthsUM < binBounds(i, 2));
             binnedCondition = createTwoColorSubset(condResult, indices, [condResult.condition '-bin_' binName{i}]);
+            
             exportTwoColorCondtionResultToData(binnedCondition, [prefix 'bin_' binFileName{i}]);   
         end
     end
