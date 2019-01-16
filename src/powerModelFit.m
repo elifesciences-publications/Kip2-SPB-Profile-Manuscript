@@ -18,15 +18,24 @@ function [fitresult, gof] = powerModelFit(quantilesAllLow, quantilesAllHigh, doP
 [xData, yData] = prepareCurveData( quantilesAllLow, quantilesAllHigh );
 
 % Set up fittype and options.
-ft = fittype('poly1');% 'power1' );
-opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
-opts.Display = 'Off';
-opts.StartPoint = [0.0709280171698654 1.3004811420376];
+% ft = fittype( 'poly1' );
+% opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
+% opts.Display = 'Off';
+% opts.StartPoint = [0.0709280171698654 1.3004811420376];
+
+ft = fittype( 'poly1' );
+opts = fitoptions( 'Method', 'LinearLeastSquares' );
+%opts.Robust = 'Bisquare';
+
+% ft = fittype( 'smoothingspline' );
+% opts = fitoptions( 'Method', 'SmoothingSpline' );
+% opts.Normalize = 'on';
+% opts.SmoothingParam = 0.999;
 
 % Fit model to data.
 [fitresult, gof] = fit( xData, yData, ft, opts );
 
-if doPlot
+if doPlot 
     % Create a figure for the plots.
     figure( 'Name', 'untitled fit 1' );
 
@@ -47,5 +56,6 @@ if doPlot
     xlabel quantilesAllLow
     ylabel quantilesAllHigh
     grid on
+    
 end
 

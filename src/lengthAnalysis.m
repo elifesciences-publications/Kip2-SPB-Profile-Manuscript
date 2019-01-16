@@ -92,8 +92,97 @@ outFileKip3.green = [mergedDataFolderSep '20180212_14590_merged_Kip3-3sfGFP_Spc4
 outFileKip3.red   = [mergedDataFolderSep '20180212_14590_merged_Kip3-3sfGFP_Spc42-mCherry-Distal-named-red.txt'];
 mergeAndScaleDatasetsTwoColor(kip3File1, defaultScaling, kip3File2, defaultScaling, outFileKip3)
 
+%% Merge wt bud data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15100-bud-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15100-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15100b-bud-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15100b-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208bud.green = [mergedDataFolderSep '20181208_15100-merged-bud-Kip2-3sfGFP-Spc42-mCherry-metaPhase-named-green.txt'];
+outFile1208bud.red   = [mergedDataFolderSep '20181208_15100-merged-bud-Kip2-3sfGFP-Spc42-mCherry-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208bud)
+
+%% Merge wt mom data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15100-mom-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15100-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15100b-mom-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15100b-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208mom.green = [mergedDataFolderSep '20181208_15100-merged-mom-Kip2-3sfGFP-Spc42-mCherry-metaPhase-named-green.txt'];
+outFile1208mom.red   = [mergedDataFolderSep '20181208_15100-merged-mom-Kip2-3sfGFP-Spc42-mCherry-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208mom)
+
+%% Merge bfa1-del bud data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15692-bud-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15692-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15692b-bud profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15692b-bud profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208budBfa1Del.green = [mergedDataFolderSep '20181208_15692-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-green.txt'];
+outFile1208budBfa1Del.red   = [mergedDataFolderSep '20181208_15692-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208budBfa1Del)
+
+%% Merge bfa1-del mom data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15692-mom-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15692-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15629b-mom-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15629b-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208momBfa1Del.green = [mergedDataFolderSep '20181208_15692-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-green.txt'];
+outFile1208momBfa1Del.red   = [mergedDataFolderSep '20181208_15692-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208momBfa1Del)
+
+
+%% Merge bub2-del bud data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15693-bud-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15693-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15693b-bud-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15693b-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208budBub2Del.green = [mergedDataFolderSep '20181208_15693-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bub2del-metaPhase-named-green.txt'];
+outFile1208budBub2Del.red   = [mergedDataFolderSep '20181208_15693-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bub2del-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208budBub2Del)
+
+%% Merge bub2-del mom data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15693-mom-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15693-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15693b-mom-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15693b-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208momBub2Del.green = [mergedDataFolderSep '20181208_15693-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bub2del-metaPhase-named-green.txt'];
+outFile1208momBub2Del.red   = [mergedDataFolderSep '20181208_15693-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bub2del-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208momBub2Del)
+
+%% Merge bfa1-bub2-del bud data 2018-12-08 (replicate strains, after inspecting data separately)
+file1.green = [dataFolderSep '15794-bud-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15794-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15794b-bud-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15794b-bud-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208budBfa1Bub2Del.green = [mergedDataFolderSep '20181208_15794-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bfa1bub2del-metaPhase-named-green.txt'];
+outFile1208budBfa1Bub2Del.red   = [mergedDataFolderSep '20181208_15794-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bfa1bub2del-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208budBfa1Bub2Del)
+
+%% Merge bfa1-bub2-del mom data 2018-12-08 (replicate strains, after inspecting data separately),
+file1.green = [dataFolderSep '15794-mom-profile-reversed-metaPhase-named-green.txt'];
+file1.red   = [dataFolderSep '15794-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling1 = defaultScaling;
+file2.green = [dataFolderSep '15794b-mom-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15794b-mom-profile-reversed-metaPhase-named-red.txt'];
+scaling2 = defaultScaling;
+outFile1208momBfa1Bub2Del.green = [mergedDataFolderSep '20181208_15794-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bfa1bub2del-metaPhase-named-green.txt'];
+outFile1208momBfa1Bub2Del.red   = [mergedDataFolderSep '20181208_15794-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bfa1bub2del-metaPhase-named-red.txt'];
+mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208momBfa1Bub2Del)
+
 %%
-debug = false;
+debug = true;
 exportPlots = true;
 exportResults = true;
 opacity = 0.2;
@@ -169,6 +258,8 @@ dataSet.greenFile = outFile.green;
 dataSet.redFile   = outFile.red;
 dataSet.exportBins = true;
 dataSets{end+1} = dataSet;
+
+
 
 dataSet = dataSetTemplate;
 dataSet.name = 'wt-20180130-15100b-Distal';
@@ -248,6 +339,71 @@ for i = 1:size(dataAggregationConfig.greenFileNames,1)
         end
     end
 end
+
+dataSet = dataSetTemplate;
+dataSet.name = 'wt-20181208-15100-bud-merged';
+dataSet.greenFile = outFile1208bud.green;
+dataSet.redFile   = outFile1208bud.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'wt-20181208-15100-mom-merged';
+dataSet.greenFile = outFile1208mom.green;
+dataSet.redFile   = outFile1208mom.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'bfa1del-20181208-15692-bud-merged';
+dataSet.greenFile = outFile1208budBfa1Del.green;
+dataSet.redFile   = outFile1208budBfa1Del.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'bfa1del-20181208-15692-mom-merged';
+dataSet.greenFile = outFile1208momBfa1Del.green;
+dataSet.redFile   = outFile1208momBfa1Del.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'bub2del-20181208-15693-bud-merged';
+dataSet.greenFile = outFile1208budBub2Del.green;
+dataSet.redFile   = outFile1208budBub2Del.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'bub2del-20181208-15693-mom-merged';
+dataSet.greenFile = outFile1208momBub2Del.green;
+dataSet.redFile   = outFile1208momBub2Del.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'bfa1bub2del-20181208-15794-bud-merged';
+dataSet.greenFile = outFile1208budBfa1Bub2Del.green;
+dataSet.redFile   = outFile1208budBfa1Bub2Del.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
+dataSet = dataSetTemplate;
+dataSet.name = 'bfa1bub2del-20181208-15794-mom-merged';
+dataSet.greenFile = outFile1208momBfa1Bub2Del.green;
+dataSet.redFile   = outFile1208momBfa1Bub2Del.red;
+dataSet.exportBins = true;
+dataSet.dataIsInSpbToPlusEndOrder = true;
+dataSets{end+1} = dataSet;
+
 
 %% Create binned datasets
 for i = 1:length(dataSets)
