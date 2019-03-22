@@ -26,10 +26,10 @@ directories = {
     '15100-mom-profile'
     '15100b-bud-profile'
     '15100b-mom-profile'
-    '15629b-mom-profile'
+    '15692b-mom-profile'
     '15692-bud-profile'
     '15692-mom-profile'
-    '15692b-bud profile'
+    '15692b-bud-profile'
     '15693-bud-profile'
     '15693-mom-profile'
     '15693b-bud-profile'
@@ -166,6 +166,10 @@ for dirIndex = 1:length(directories)
 
             if all(all(T_r{:,:} == T_g{:,:}))
                 error(['Red and green profile are the same: ' currentGreenFileName]);
+            end
+            
+            if mean(T_g{:,2}) > mean(T_r{:,2})
+                error(['Red profile less intense than green profile - this is likely an error: ' currentGreenFileName ' / ' currentRedFileName]);
             end
         end
         greenFileNames{dirIndex, localIndex} = [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-green.txt'];

@@ -17,7 +17,7 @@ lengthAnalysis();
 
 %% 4. Plot binned data
 compareConditions();
-
+return;
 %% 5. Simulate model & compute measurement model
 % This is computationally intense and requires cluster usage.
 % To run this, open and run src/modelFitting/runSampling.m

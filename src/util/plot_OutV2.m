@@ -135,7 +135,9 @@ function [] = plot_OutV2(OutV,paramSpecs,varargin)
         foo2.YLabel.Color = [0 0 0];
         foo2.XColor = [0 0 0];
         foo2.YColor = [0 0 0];
-        axis([xmin(diagonalIndex) xmax(diagonalIndex) minCost maxCost]);
+        if xmax(diagonalIndex) > xmin(diagonalIndex) && maxCost > minCost
+            axis([xmin(diagonalIndex) xmax(diagonalIndex) minCost maxCost]);
+        end
         ylabel('Cost');
         box off
 

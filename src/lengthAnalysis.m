@@ -118,8 +118,8 @@ mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208mom)
 file1.green = [dataFolderSep '15692-bud-profile-reversed-metaPhase-named-green.txt'];
 file1.red   = [dataFolderSep '15692-bud-profile-reversed-metaPhase-named-red.txt'];
 scaling1 = defaultScaling;
-file2.green = [dataFolderSep '15692b-bud profile-reversed-metaPhase-named-green.txt'];
-file2.red   = [dataFolderSep '15692b-bud profile-reversed-metaPhase-named-red.txt'];
+file2.green = [dataFolderSep '15692b-bud-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15692b-bud-profile-reversed-metaPhase-named-red.txt'];
 scaling2 = defaultScaling;
 outFile1208budBfa1Del.green = [mergedDataFolderSep '20181208_15692-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-green.txt'];
 outFile1208budBfa1Del.red   = [mergedDataFolderSep '20181208_15692-merged-bud-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-red.txt'];
@@ -129,8 +129,8 @@ mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208budBf
 file1.green = [dataFolderSep '15692-mom-profile-reversed-metaPhase-named-green.txt'];
 file1.red   = [dataFolderSep '15692-mom-profile-reversed-metaPhase-named-red.txt'];
 scaling1 = defaultScaling;
-file2.green = [dataFolderSep '15629b-mom-profile-reversed-metaPhase-named-green.txt'];
-file2.red   = [dataFolderSep '15629b-mom-profile-reversed-metaPhase-named-red.txt'];
+file2.green = [dataFolderSep '15692b-mom-profile-reversed-metaPhase-named-green.txt'];
+file2.red   = [dataFolderSep '15692b-mom-profile-reversed-metaPhase-named-red.txt'];
 scaling2 = defaultScaling;
 outFile1208momBfa1Del.green = [mergedDataFolderSep '20181208_15692-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-green.txt'];
 outFile1208momBfa1Del.red   = [mergedDataFolderSep '20181208_15692-merged-mom-Kip2-3sfGFP-Spc42-mCherry-bfa1del-metaPhase-named-red.txt'];
@@ -182,7 +182,7 @@ outFile1208momBfa1Bub2Del.red   = [mergedDataFolderSep '20181208_15794-merged-mo
 mergeAndScaleDatasetsTwoColor(file1, scaling1, file2, scaling2, outFile1208momBfa1Bub2Del)
 
 %%
-debug = true;
+debug = false;
 exportPlots = true;
 exportResults = true;
 opacity = 0.2;
