@@ -73,7 +73,7 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
     t = 0;
     tIndex = 1;
     mtState = zeros(length(tspan), maxLength);
-
+    kip2FreeState = zeros(length(tspan), 1);
     
     runSize = 100;
     nRuns = 0;
@@ -96,7 +96,7 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
         runLengthsKip2(nRuns) = runLength;
         runTimesKip2(nRuns) = runTime;
     end
-    
+    movingKip2s = mt;
     tState = zeros(size(tspan));
     while t < tend
         
@@ -110,31 +110,25 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
         while tIndex <= length(tspan) && t > tspan(tIndex)
             mtState(tIndex, :) = mt;
             tState(tIndex) = t;
+            kip2FreeState(tIndex) = nKip2Free;
             tIndex = tIndex + 1;
         end
 
-        %% Attachment       
-        freeSites = mt == 0;
-        
-        r_on_mt = k_on_mt * (60/140) * nKip2Free; % Conversion: 140 molecules =^= 60 nM
-        attachmentRates = double(freeSites) .* r_on_mt;
+        %% Attachment               
+        r_on_mt = k_on_mt * (60/140) * nKip2Free;
+        attachmentRates = double(~mt) .* r_on_mt;
         attachmentCumSum = cumsum(attachmentRates);
         
         a(:, 1) = attachmentCumSum(end);
         
         %% Stepping
-        kip2Motors = mt == 1;
-        
-        movingKip2s = kip2Motors & [freeSites(2:end) 1];
-        
-        % Motors 
         stepRates = double(movingKip2s) .* k_step_mt;
         stepCumSum = cumsum(stepRates);
         
         a(:, 2) = stepCumSum(end);
         
         %% Detachment   
-        detachmentRates = double(kip2Motors) .* k_detach_mt;
+        detachmentRates = double(mt) .* k_detach_mt;
         detachmentCumSum = cumsum(detachmentRates);
         a(:, 3) = detachmentCumSum(end);     
         
@@ -157,7 +151,7 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
         
         sum_j = 0;
         reactionFound = 0;
-        jnext = 1;
+
         for i = 1:nReactions
             inext = i;
             sum_j1 = sum_j;
@@ -177,50 +171,61 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
             case 1
                 % Next reaction is Kip2 attachment 
                 site = find(attachmentCumSum >= delta, 1);
-                if mt(jnext, site) ~= 0
+                if mt(site) ~= 0
                     error('Site already bound!');
                 end
-                mt(jnext, site) = 1;
-                runLengthKip2(jnext, site) = 0;
-                attachedTimeKip2(jnext, site) = t + tau;
+                mt(site) = 1;
+                runLengthKip2(site) = 0;
+                attachedTimeKip2(site) = t + tau;
+                movingKip2s(site) = (site == maxLength) || (~mt(site+1));
                 nKip2Free = nKip2Free - 1;
+                if site > 1
+                    movingKip2s(site - 1) = 0;
+                end
             case 2
                 % Next reaction is Kip2 stepping
                 site = find(stepCumSum >= delta, 1);
-                if mt(jnext, site) ~= 1
+                if mt(site) ~= 1
                     error('Kip2 location wrong!');
                 end
                 
-                mt(jnext, site) = 0;
+                mt(site) = 0;
+                movingKip2s(site) = 0;
                 if site ~= maxLength
                     % Motor doesn't fall off
-                    if mt(jnext, site + 1) ~= 0
+                    if mt(site + 1) ~= 0
                         error('Site already bound!');
                     end
-                    mt(jnext, site + 1) = 1;
-                    runLengthKip2(jnext, site + 1) = runLengthKip2(jnext, site) + 1; 
-                    attachedTimeKip2(jnext, site + 1) = attachedTimeKip2(jnext, site);
+                    mt( site + 1) = 1;
+                    runLengthKip2(site + 1) = runLengthKip2(site) + 1; 
+                    attachedTimeKip2(site + 1) = attachedTimeKip2(site);
+                    movingKip2s(site + 1) = ((site + 1) == maxLength) || (~mt(site + 2));
                 else
                     % Motor falls off
-                    updateRuns(runLengthKip2(jnext, site) + 1, t + tau - attachedTimeKip2(jnext, site));
+                    updateRuns(runLengthKip2(site) + 1, t + tau - attachedTimeKip2(site));
                     nKip2Free = nKip2Free + 1;
                 end
-                runLengthKip2(jnext, site) = 0;
-                attachedTimeKip2(jnext, site) = 0;
+                if site > 1
+                    movingKip2s(site - 1) = mt(site - 1);
+                end
+                runLengthKip2(site) = 0;
+                attachedTimeKip2(site) = 0;
             case 3
                 % Next reaction is Kip2 unbinding in other zone
                 site = find(detachmentCumSum >= delta, 1);
 
-                if mt(jnext, site) ~= 1
+                if mt( site) ~= 1
                     error('Kip2 location wrong!');
                 end
-                mt(jnext, site) = 0;
-                
-                updateRuns(runLengthKip2(jnext, site), t + tau - attachedTimeKip2(jnext, site));
-                
+                mt(site) = 0;
+                movingKip2s(site) = 0;
+                updateRuns(runLengthKip2(site), t + tau - attachedTimeKip2(site));
+                if site > 1
+                    movingKip2s(site - 1) = mt(site - 1);
+                end
                 nKip2Free = nKip2Free + 1;
-                attachedTimeKip2(jnext, site) = 0;
-                runLengthKip2(jnext, site) = 0;
+                attachedTimeKip2(site) = 0;
+                runLengthKip2(site) = 0;
             case default
                 error('Unknown reaction');
         end
@@ -234,6 +239,7 @@ function result = simulateModel(parameters, parameterIndex, tspan, currentFileNa
     while tIndex <= length(tspan) && t > tspan(tIndex)
         mtState(tIndex, :) = mt;
         tState(tIndex) = t;
+        kip2FreeState(tIndex) = nKip2Free;
         tIndex = tIndex + 1;
     end
     
