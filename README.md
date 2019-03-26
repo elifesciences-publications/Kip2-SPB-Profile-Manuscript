@@ -42,8 +42,8 @@ Usage
 References
 ==========
 [1]: http://google.com
-1. Xiuzhen Chen†, Lukas A. Widmer†, Marcel M. Stangier, Michel O. Steinmetz, Jörg Stelling*, Yves Barral*. (2018)  
-A mechanism for the control of microtubule plus-end dynamics from the minus-end  
+1. Xiuzhen Chen†, Lukas A. Widmer†, Marcel M. Stangier, Michel O. Steinmetz, Jörg Stelling*, Yves Barral*. (2019)  
+Remote control of microtubule plus-end dynamics and function from the minus-end
 † contributed equally  
 \* corresponding authors: <joerg.stelling@bsse.ethz.ch>, <yves.barral@bc.biol.ethz.ch>  
 [Submitted.]
