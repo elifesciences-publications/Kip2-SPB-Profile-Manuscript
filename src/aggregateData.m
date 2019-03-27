@@ -22,6 +22,22 @@ directories = {
     '20180212_14590_Kip3-3sfGFP_Spc42-mCherry_sum_projection'  
     '20180224_15100_Kip2-3sfGFP_Spc42-mCherry_sumProjecion'
     '20180224_15102_Kip2-S63A-3sfGFP_Spc42-mCherry_sumProjecion'
+    '15100-bud-profile'
+    '15100-mom-profile'
+    '15100b-bud-profile'
+    '15100b-mom-profile'
+    '15692b-mom-profile'
+    '15692-bud-profile'
+    '15692-mom-profile'
+    '15692b-bud-profile'
+    '15693-bud-profile'
+    '15693-mom-profile'
+    '15693b-bud-profile'
+    '15693b-mom-profile'
+    '15794-bud-profile'
+    '15794-mom-profile'
+    '15794b-bud-profile'
+    '15794b-mom-profile'
     };
 
 outFileNames = {
@@ -32,11 +48,19 @@ outFileNames = {
     '20180224_15100_Kip2-3sfGFP_Spc42-mCherry'
     '20180224_15102_Kip2-S63A-3sfGFP_Spc42-mCherry'
     };
+%outFileNames = [outFileNames; directories(7:end)];
+
+for i = 7:length(directories)
+    outFileNames{i} = [directories{i} '-reversed'];
+end
+
+greenFileNames = cell(size(outFileNames,1),3);
+redFileNames = cell(size(outFileNames,1),3);
 
 for dirIndex = 1:length(directories)
     directory = [baseDirectory directories{dirIndex}];
-    allGreenCellFiles = dir([directory filesep '**' filesep '*g.csv']);
-    allRedCellFiles = dir([directory filesep '**' filesep '*r.csv']);
+    allGreenCellFiles = [dir([directory filesep '**' filesep '*g.csv']); dir([directory filesep '**' filesep '*g.txt'])];
+    allRedCellFiles = [dir([directory filesep '**' filesep '*r.csv']); dir([directory filesep '**' filesep '*r.txt'])];
     
     if length(allGreenCellFiles) ~= length(allRedCellFiles)
         f1 = {allGreenCellFiles.name}';
@@ -83,7 +107,7 @@ for dirIndex = 1:length(directories)
     %%
     
     cellCycles = fieldnames(greenFilesByCondition)';
-    
+    localIndex = 1;
     for cellCycle = cellCycles
         T_green = table([0],'VariableNames',{'X'});
         T_red   = table([0],'VariableNames',{'X'});
@@ -143,9 +167,18 @@ for dirIndex = 1:length(directories)
             if all(all(T_r{:,:} == T_g{:,:}))
                 error(['Red and green profile are the same: ' currentGreenFileName]);
             end
+            
+            if mean(T_g{:,2}) > mean(T_r{:,2})
+                error(['Red profile less intense than green profile - this is likely an error: ' currentGreenFileName ' / ' currentRedFileName]);
+            end
         end
-
+        greenFileNames{dirIndex, localIndex} = [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-green.txt'];
+        redFileNames{dirIndex, localIndex}   = [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-red.txt'];
+        
         writetable(T_green, [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-green.txt'], 'Delimiter', '\t')
         writetable(T_red,   [resultDirectory outFileNames{dirIndex} '-' cellCycle{1} '-named-red.txt'], 'Delimiter', '\t')
+        localIndex = localIndex + 1;
     end
 end
+
+save([resultDirectory filesep 'rawDataDirectories.mat']);

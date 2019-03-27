@@ -7,3 +7,6 @@
 [submodule "src/dependencies/legendflex"]
 	path = src/dependencies/legendflex
 	url = https://github.com/kakearney/legendflex-pkg.git
+[submodule "src/dependencies/violinPlot"]
+	path = src/dependencies/violinPlot
+	url = https://github.com/bastibe/Violinplot-Matlab.git
