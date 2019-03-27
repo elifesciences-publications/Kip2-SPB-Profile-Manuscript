@@ -21,8 +21,11 @@ function loadDependencies()
 
     %%
     addpath('util');
+    addpath(['dependencies' filesep 'interp1qr']);
+    addpath(['dependencies' filesep 'violinPlot']);
     addpath(['dependencies' filesep 'shadedErrorBar']);
     addpath(['dependencies' filesep 'export_fig']);
     addpath(['dependencies' filesep 'legendflex' filesep 'legendflex']);
     addpath(['dependencies' filesep 'legendflex' filesep 'setgetpos_V1.2']);
+    
 end

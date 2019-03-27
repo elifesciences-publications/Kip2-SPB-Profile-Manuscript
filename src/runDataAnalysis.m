@@ -17,13 +17,21 @@ lengthAnalysis();
 
 %% 4. Plot binned data
 compareConditions();
-return;
+
 %% 5. Simulate model & compute measurement model
 % This is computationally intense and requires cluster usage.
 % To run this, open and run src/modelFitting/runSampling.m
+%%
+addpath(['model']);
+addpath(['model' filesep 'parameterEstimation']);
 
 %% 6. Compare simulation results to data, and estimate parameters
-compareSimulationToAggregatedData();
+compareToDataFastRestrictedAll();
+compareToDataFastRestrictedWt();
+compareToDataFastRestrictedbfa1bub2();
+compareToDataFastRestrictedS63A();
 
-%% 7. Plot predictions for length bins not used during parameter estimation
-useSimulationForPrediction();
+%% 7. Export comparison plots
+plotViolinPlotswtbfa1bub2();
+plotViolinPlotswtS63A();
+plotViolinPlotswtS63Abfa1bub2();
