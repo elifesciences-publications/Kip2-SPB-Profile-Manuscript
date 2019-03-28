@@ -35,3 +35,6 @@ compareToDataFastRestrictedS63A();
 plotViolinPlotswtbfa1bub2();
 plotViolinPlotswtS63A();
 plotViolinPlotswtS63Abfa1bub2();
+
+%% 8. Export model kymograph
+plotKymograph();
