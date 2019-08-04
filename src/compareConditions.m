@@ -14,56 +14,6 @@ load(['..' filesep 'analyzedData' filesep 'binnedProfiles.mat'], 'conditionResul
 
 %%
 conditionCombinations = {};
-% 
-% % wt bud data comparison
-% for currentConditionIndex = 0:6
-%     combo = struct;
-%     combo.plotRegressionLine = false;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = currentConditionIndex + fliplr([43 62 326]);
-%     %combo.adjustFluorescenceFromCondition = currentConditionIndex + [43 62 326];
-%     %combo.adjustFluorescenceToReferenceCondition = currentConditionIndex + [43 43 43];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 1.5]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.adjustFluorescenceFromCondition = [1 3 35];
-%     combo.adjustFluorescenceToReferenceCondition = [1 1 1];
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % wt mom data comparison
-% for currentConditionIndex = 0:6
-%     combo = struct;
-%     combo.plotRegressionLine = false;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = currentConditionIndex + fliplr([53 71 336]);
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (mom), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 1.5]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.adjustFluorescenceFromCondition = [1 3 35];
-%     combo.adjustFluorescenceToReferenceCondition = [1 1 1];
-%     conditionCombinations{end+1} = combo;
-% end
 
 
 % 15100 vs 15100b, bud
@@ -314,298 +264,7 @@ for currentConditionIndex = [392]
     conditionCombinations{end+1} = combo;
 end
 
-
-%%% TODO
-
-% wt different strains / different days
-% for currentConditionIndex = 0:6
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = currentConditionIndex + [102 120 54 178 195];
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% 
-% end
-% 
-% for currentConditionIndex = 0:5
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = currentConditionIndex + [45 63 187 205];
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (mom), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-
-% 
-% % 15100 vs 15100b, bud
-% for currentConditionIndex = [178 195]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15100 vs 15100b, mom
-% for currentConditionIndex = [187 205]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (mom), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15692 vs 15692b (bud)
-% for currentConditionIndex = [220 239]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP bfa1\delta (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15692 vs 15692b (mom)
-% for currentConditionIndex = [229 212]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP bfa1\delta (mom), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15693 vs 15693b (bud)
-% for currentConditionIndex = [248 267]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP bub2\delta (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15693 vs 15693b (mom)
-% for currentConditionIndex = [258 276]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP bub2\delta (mom), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15794 vs 15794b (bud)
-% for currentConditionIndex = [286 305]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP bfa1\Delta bub2\Delta (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% % 15794 vs 15794b (mom)
-% for currentConditionIndex = [295]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     %combo.adjustFluorescenceFromCondition = [9 11 3 19 21];
-%     %combo.adjustFluorescenceToReferenceCondition = [1 1 1 1 1];
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP bfa1\Delta bub2\Delta (mom), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% for currentConditionIndex = [9]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+5):-1:currentConditionIndex;
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; 
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (bud), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% 
-%     combo.restrictToDistalIndex = -2;
-%     combo.titleText = 'Kip2-3xsfGFP (bud, no mom mt), mean profile / 95% CI';
-%     combo.legendLocation = 'nw'; 
-%     combo.legendBuffer = [5 -5];
-%     combo.ylimsGreen = [-0.05 0.9]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.restrictToDistalIndex = 2;
-%     combo.titleText = 'Kip2-3xsfGFP (bud, mom mt), mean profile / 95% CI';
-%     combo.legendLocation = 'nw'; 
-%     combo.legendBuffer = [5 -5];
-%     combo.ylimsGreen = [-0.05 0.9]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.alignAt = 'both';
-%     combo.titleText = 'Kip2-3xsfGFP (bud), mean profile / 95% CI';
-%     combo.restrictToDistalIndex = 0;
-%     combo.legendLocation = 'ne'; 
-%     combo.legendBuffer = [-10 -10];
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% 
-%     combo.restrictToDistalIndex = -2;
-%     combo.titleText = 'Kip2-3xsfGFP (bud, no mom mt), mean profile / 95% CI';
-%     combo.legendLocation = 'nw'; 
-%     combo.legendBuffer = [5 -5];
-%     combo.ylimsGreen = [-0.05 0.9]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.restrictToDistalIndex = 2;
-%     combo.titleText = 'Kip2-3xsfGFP (bud, mom mt), mean profile / 95% CI';
-%     combo.legendLocation = 'nw'; 
-%     combo.legendBuffer = [5 -5];
-%     combo.ylimsGreen = [-0.05 0.9]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-% %NEW Kip2 wt metaphase (distal)
-% for currentConditionIndex = [19]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+4):-1:currentConditionIndex;
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     combo.legendLocation = 'n'; %NorthEastOutside
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip2-3xsfGFP (distal), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = false;
-%     combo.alignAt = 'bothSPB';
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.legendLocation = 'nw'; %NorthEastOutside
-%     combo.legendBuffer = [5 -5];    
-%     combo.ylimsGreen = [-0.05 0.9]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.legendLocation = 'ne'; %NorthEastOutside
-%     combo.legendBuffer = [-10 -10];
-%     combo.alignAt = 'both';
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-% 
-%     combo.legendLocation = 'nw'; %NorthEastOutside
-%     combo.legendBuffer = [5 -5];
-%     combo.ylimsGreen = [-0.05 0.9]*10;
-%     conditionCombinations{end+1} = combo;
-% end
-% 
-%  
-%NEW S63A
+% S63A
 for currentConditionIndex = [79]
     combo = struct;
     combo.plotRegressionLine = true;
@@ -641,17 +300,9 @@ for currentConditionIndex = [79]
     combo.restrictToDistalIndex = 6;
     combo.titleText = 'Kip2-S63A-3xsfGFP (bud, mom mt), mean profile / 95% CI';
     conditionCombinations{end+1} = combo;         
-    
-    %combo.restrictToDistalIndex = 0;
-%     combo.titleText = 'Kip2-S63A-3xsfGFP (bud), mean profile / 95% CI';
-%     combo.xAspect = 1;
-%     combo.alignAt = 'both';
-%     conditionCombinations{end+1} = combo;
-%     combo.xAspect = 1.25;
-%     conditionCombinations{end+1} = combo;
 end
 
-%NEW S63A distal
+% S63A distal
 for currentConditionIndex = [89]
     combo = struct;
     combo.plotRegressionLine = true;
@@ -659,7 +310,6 @@ for currentConditionIndex = [89]
     combo.conditions = (currentConditionIndex+8):-1:currentConditionIndex;
     combo.legendConditions = fliplr(combo.conditions);
     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-    %combo.alignAt = 'plusEnd';
     combo.legendLocation = 'nw';
     combo.legendBuffer = [10 -10];
     combo.titleText = 'Kip2-S63A-3xsfGFP (distal), mean profile / 95% CI';
@@ -667,7 +317,6 @@ for currentConditionIndex = [89]
     combo.xlims    = [-3.7 0.8];
     combo.xlimsSPB = [-0.5 4];
     combo.ylimsGreen = [-0.1 1.5]*10;
-    %conditionCombinations{end+1} = combo;
     combo.alignAt = 'bothSPB';
     conditionCombinations{end+1} = combo;
     combo.xAspect = 1.25;
@@ -679,14 +328,9 @@ for currentConditionIndex = [89]
     conditionCombinations{end+1} = combo;
     combo.xAspect = 1.25; %1.25
     conditionCombinations{end+1} = combo;    
-%     combo.alignAt = 'both';
-%     conditionCombinations{end+1} = combo;
-%     combo.xAspect = 1.25;
-%     conditionCombinations{end+1} = combo;
 end
-% 
 
-%NEW Kip3
+% Kip3
 for currentConditionIndex = [98]
     combo = struct;
     combo.plotRegressionLine = true;
@@ -696,23 +340,17 @@ for currentConditionIndex = [98]
     combo.xlims    = [-2.4 0.6];
     combo.xlimsSPB = combo.xlims + 2.1;
     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-    %combo.alignAt = 'plusEnd';
     combo.legendLocation = 'n';
     combo.legendBuffer = [-50 -10];
     combo.titleText = 'Kip3-3xsfGFP (bud), mean profile / 95% CI';
     combo.grayoutSpindleArea = true;
-    %conditionCombinations{end+1} = combo;
     combo.alignAt = 'bothSPB';
     combo.ylimsGreen = [-0.1 2]*10;
     combo.yTicks = [0 5 10 15 20];
     conditionCombinations{end+1} = combo;
-    
-%     combo.legendBuffer = [10 -10];
-%     combo.alignAt = 'both';
-%     conditionCombinations{end+1} = combo;
 end
 
-%NEW Kip3 distal
+% Kip3 distal
 for currentConditionIndex = [106]
     combo = struct;
     combo.plotRegressionLine = true;
@@ -722,20 +360,14 @@ for currentConditionIndex = [106]
     combo.xlims    = [-2.4 0.6];
     combo.xlimsSPB = combo.xlims + 2.1;
     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-    %combo.alignAt = 'plusEnd';
     combo.legendLocation = 'n';
     combo.legendBuffer = [-50 -10];
     combo.titleText = 'Kip3-3xsfGFP (mom), mean profile / 95% CI';
     combo.grayoutSpindleArea = true;
-    %conditionCombinations{end+1} = combo;
     combo.alignAt = 'bothSPB';
     combo.ylimsGreen = [-0.1 2]*10;
     combo.yTicks = [0 5 10 15 20];
     conditionCombinations{end+1} = combo;
-    
-%     combo.legendBuffer = [10 -10];
-%     combo.alignAt = 'both';
-%     conditionCombinations{end+1} = combo;
 end
 
 % wt Jan, bud (no mom MT)
@@ -886,32 +518,6 @@ for currentConditionIndex = 119
     combo.ylimsGreen = [-0.1 1.5]*10;
     conditionCombinations{end+1} = combo;
 end
-
-% 
-% %NEW Kip3 distal
-% for currentConditionIndex = [72]
-%     combo = struct;
-%     combo.restrictToDistalIndex = 0;
-%     combo.conditions = (currentConditionIndex+1):-1:currentConditionIndex;
-%     combo.legendConditions = fliplr(combo.conditions);
-%     combo.xlims    = [-2.4 0.6];
-%     combo.xlimsSPB = combo.xlims + 2.1;
-%     combo.yAxisLabel = 'GFP fluorescence along aMT (a.u.)';
-%     %combo.alignAt = 'plusEnd';
-%     combo.legendLocation = 'n';
-%     combo.legendBuffer = [0 -10];
-%     combo.titleText = 'Kip3-3xsfGFP (distal), mean profile / 95% CI';
-%     combo.grayoutSpindleArea = true;
-%     %conditionCombinations{end+1} = combo;
-%     combo.alignAt = 'bothSPB';
-%     combo.ylimsGreen = [-0.1 2]*10;
-%     conditionCombinations{end+1} = combo;
-%     
-%     combo.legendBuffer = [10 -10];
-%     combo.legendLocation = 'nw';
-%     combo.alignAt = 'both';
-%     conditionCombinations{end+1} = combo;
-% end
 
 
 %%
@@ -1399,8 +1005,8 @@ for combinationIndex = 1:length(conditionCombinations)
         else
             yCoord = 1;
         end
-        text(mean(currentXlims), yCoord, sprintf('slope = %.3g ± %.3g, Y-intercept = %.3g ± %.3g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1)), 'HorizontalAlignment', 'center');
-        fprintf('plot: %i, slope = %.3g ± %.3g, Y-intercept = %.3g ± %.3g\n', combinationIndex, linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
+        text(mean(currentXlims), yCoord, sprintf('slope = %.3g ï¿½ %.3g, Y-intercept = %.3g ï¿½ %.3g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1)), 'HorizontalAlignment', 'center');
+        fprintf('plot: %i, slope = %.3g ï¿½ %.3g, Y-intercept = %.3g ï¿½ %.3g\n', combinationIndex, linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
         %legendText{end+1} = sprintf('slope = %g ï¿½ %g, Y-intercept = %g ï¿½ %g', linearModel.Coefficients.Estimate(2), linearModel.Coefficients.SE(2), linearModel.Coefficients.Estimate(1), linearModel.Coefficients.SE(1))
         if isfield(combo, 'slopeTag')
             savedSlopes.(combo.slopeTag) = linearModel;

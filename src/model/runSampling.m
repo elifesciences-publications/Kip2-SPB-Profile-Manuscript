@@ -6,7 +6,7 @@
 % is fairly computationally intense, and was run on 400 cores to achieve
 % fast compute times.
 
-% © 2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
+%  2018, ETH Zurich, Lukas Widmer (l.widmer@gmail.com)
 clear
 
 %%
@@ -46,7 +46,7 @@ nNodes = 400;
 
 %% Debug options
 runSingleDebug = false;    % Runs single-threaded, synchronously
-runSingleParallel = true; % Runs single-threaded, asynchronously
+runSingleParallel = false; % Runs single-threaded, asynchronously
 debugIndices = 1;          % Which indices to run for debugging
 
 

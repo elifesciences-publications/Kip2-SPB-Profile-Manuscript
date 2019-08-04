@@ -37,7 +37,7 @@ Linux (instructions here are for Ubuntu / Debian)
 Usage
 =====
 * Run [runDataAnalysis.m](src/runDataAnalysis.m) in MATLAB to perform the analysis of the experimental data, and generate the data and model figures.
-* Run [runSampling.m](src/modelFitting/runSampling.m) with one of the modes specified therein to simulate the stochastic model and compute the measurement model. Warning: this is computationally intense, using a compute cluster is highly recommended.
+* Run [runSampling.m](src/model/runSampling.m) with one of the modes specified therein to simulate the stochastic model and compute the measurement model. Warning: this is computationally intense, using a compute cluster is highly recommended.
 
 References
 ==========
