@@ -43,6 +43,7 @@ function aggregateResults(i, resultFolderCorrected, absResultFolder, binsToCompu
         result.vmBin{binIndex}.allAlignedBinnedProfileStarts = nan(1, totalNprofiles);
         result.vmBin{binIndex}.allAlignedBinnedProfileCoords = nan(totalNprofiles, maxIndAll);
         result.vmBin{binIndex}.meanBoundKip2s = nan(1, nComputedLengths);
+        result.vmBin{binIndex}.mtLengths = nan(1, totalNprofiles);
         
         for j = 1:nComputedLengths
             currentFile = load([resultFolderCorrected.absVmFolderName{j} int2str(i) '.mat']);   
@@ -97,7 +98,7 @@ function aggregateResults(i, resultFolderCorrected, absResultFolder, binsToCompu
                     %result.vmBin{binIndex}.allAlignedBinnedProfiles(profileIndex, :)
                     %result.vmBin{binIndex}.allAlignedBinnedProfileCoords(profileIndex, :)
                     result.vmBin{binIndex}.allAlignedBinnedProfileStarts(profileIndex) = startIndMinus1 + 1;
-                    
+                    result.vmBin{binIndex}.mtLengths(profileIndex) = currentFile.result.simResult.parameters.maxLength;
                     
                     % result.vmBin{binIndex}.mean
                 end
@@ -121,15 +122,15 @@ function aggregateResults(i, resultFolderCorrected, absResultFolder, binsToCompu
         for bin = binsToCompute'
             binIndex = binIndex + 1;
             nonNanIndices = find(~isnan(result.vmBin{binIndex}.allAlignedBinnedProfileStarts));
-            nonNanIndices = nonNanIndices(1:100:end);
-
-            plot(result.vmBin{binIndex}.allAlignedBinnedProfileCoords(nonNanIndices, :)', result.vmBin{binIndex}.allAlignedBinnedProfiles(nonNanIndices, :)', 'Color', [colors(binIndex, :) 0.1])
+            rawCurvesToPlot = nonNanIndices(randsample(length(nonNanIndices), 100)); 
+            plot(result.vmBin{binIndex}.allAlignedBinnedProfileCoords(rawCurvesToPlot, :)', result.vmBin{binIndex}.allAlignedBinnedProfiles(rawCurvesToPlot, :)', 'Color', [colors(binIndex, :) 0.1])
         end
         binIndex = 0;
         for bin = binsToCompute'
             binIndex = binIndex + 1;        
             h = plot(resultOut.vmBin{binIndex}.meanAllAlignedBinnedProfileCoords, resultOut.vmBin{binIndex}.meanAllAlignedBinnedProfile, 'Color', colors(binIndex, :), 'LineWidth', 1.5);
         end
+        plot([1 1] .* mean(result.vmBin{binIndex}.mtLengths, 'omitnan') .* 0.008, [0 1], '--k', 'LineWidth', 1.5);
         
         legend([h], {sprintf('nKip2Free = %g nM\nk_{on} = %g\nk_{in} = %g\nk_{out} = %g', p(1:4))});
         legend boxoff
@@ -137,6 +138,7 @@ function aggregateResults(i, resultFolderCorrected, absResultFolder, binsToCompu
         xlim([-0.5 4]);
         xlabel('Distance from SPB ({\mu}m)');
         ylabel('Occupancy');
+        applyPaperFormatting();
         if exportPlots
             %print([resultFolderCorrectedMeanVmImages filesep int2str(i) '.pdf'], '-dpdf');
             done = 0;

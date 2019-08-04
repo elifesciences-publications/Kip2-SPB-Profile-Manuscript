@@ -27,6 +27,8 @@ function plotViolinPlots(prefix, parameterCombinations, pMin, pMax, exportFigure
     concentrations = (parameterCombinations(1, :) ./ 140 .* 61);
     fprintf('Mean [Kip2]: %g,\tStd:%g\n', mean(concentrations), std(concentrations));
     fprintf('Median [Kip2]: %g\n', median(concentrations));
+    fprintf('Mean nKip2: %g,\tStd:%g\n', mean(parameterCombinations(1, :)), std(parameterCombinations(1, :)));
+    fprintf('Median Kip2: %g\n', median(parameterCombinations(1, :)));
 
     if exportFigures
         print([parameterEstimateFigureResultFolder filesep 'pdf' filesep prefix '_violin_conc.pdf'], '-dpdf');

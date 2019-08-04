@@ -38,3 +38,9 @@ plotViolinPlotswtS63Abfa1bub2();
 
 %% 8. Export model kymograph
 plotKymograph();
+
+%% 9. Export Fig. S9 plots and Kip2 numbers at plus end
+runSamplingForFigS9_zeroGrowth();
+runSamplingForFigS9_slowGrowth();
+
+determinePlusEndNumbers();
